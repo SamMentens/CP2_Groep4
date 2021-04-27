@@ -5,8 +5,15 @@
 
 #define BMPINPUTFILE "test.bmp"
 
-int main()
+int main(int argc, char *argv[])
 {
+	
+	if(argc > 1);
+	{
+		
+		printf("Help");
+	}
+	
     #ifdef __DEBUG
         printf("DEBUG info: BMP transformer\n");
     #endif
