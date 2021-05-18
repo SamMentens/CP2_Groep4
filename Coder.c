@@ -4,11 +4,42 @@
 #define __DEBUG
 
 #define BMPINPUTFILE "test.bmp"
+#define MAXCHAR 1000
 
 int main(int argc, char *argv[])
 {
+	// --------------------------------- TXT Reader ------------------------------------------
 	
-	if(argc > 1);
+	FILE *fp;
+    char str[MAXCHAR];
+    char* SecretMessage = "D:\\School\\CP2\\CP2_Opdracht\\SecretMessage.txt";
+	
+	int i = 0;
+	char SM[MAXCHAR];
+ 
+    fp = fopen(SecretMessage, "r");
+    if (fp == NULL){
+        printf("Could not open file %s",SecretMessage);
+        return 1;
+    }
+    while (fgets(str, MAXCHAR, fp) != NULL){
+        printf("%s", str);
+		SM[i] = str;
+	    i++;
+	}    fclose(fp);
+	
+	printf("\n");
+	i=0;
+	while (SM[i] != NULL){
+	printf("%s", SM[i]);
+	}
+
+	
+	// --------------------------------- END TXT Reader --------------------------------------
+	
+	// --------------------------------- START CODE ------------------------------------------
+	
+	/* if(argc > 1);
 	{
 		
 		printf("Help");
@@ -55,7 +86,9 @@ int main(int argc, char *argv[])
 	}
    
     fclose(inputFilePointer);
-    free(inputPixels);
+    free(inputPixels); */
     
+	// --------------------------------- END START CODE ------------------------------------------
+	
     return 0;
 }
