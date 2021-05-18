@@ -51,9 +51,7 @@ int main(int argc, char *argv[])
     fclose(inputFilePointer);
 	for(int i =0; i < imageSize-2; i+=3)
 	{
-		
-		printf("pixel %d: B= %d, G=%d, R=%d\n", i/3+1 , inputPixels[i], inputPixels[i+1], inputPixels[i+2]);
-		
+		printf("pixel %d: B= %d, G=%d, R=%d\n", i, inputPixels[i], inputPixels[i+1], inputPixels[i+2]);
 	}
    
     fclose(inputFilePointer);
