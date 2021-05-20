@@ -22,11 +22,12 @@ int main(int argc, char *argv[])
         printf("Could not open file %s",SecretMessage);
         return 1;
     }
+	
     while (fgets(str, MAXCHAR, fp) != NULL){
         printf("%s", str);
 		SM[i] = str;
 	    i++;
-	}    fclose(fp);
+	}   fclose(fp);
 	
 	printf("\n");
 	i=0;
