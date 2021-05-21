@@ -3,7 +3,7 @@
 
 #define __DEBUG
 
-#define BMPINPUTFILE "test.bmp"
+#define BMPINPUTFILE "CP2_Encoded.bmp"
 #define MAXCHAR 1000
 
 int main(int argc, char *argv[])
@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
 	
 	FILE *fp;
     char str[MAXCHAR];
-    char* SecretMessage = "D:\\School\\CP2\\CP2_Opdracht\\SecretMessage.txt";
+    char* SecretMessage = "SecretMessage.txt";
 	
 	int i = 0;
 	char SM[MAXCHAR];
@@ -25,15 +25,15 @@ int main(int argc, char *argv[])
 	
     while (fgets(str, MAXCHAR, fp) != NULL){
         printf("%s", str);
-		SM[i] = str;
-	    i++;
+		//SM[i] = str;
+	    //i++;
 	}   fclose(fp);
 	
 	printf("\n");
-	i=0;
-	while (SM[i] != NULL){
-	printf("%s", SM[i]);
-	}
+	
+	//while (str[i] != NULL){
+	printf("%s \n", str);
+	//}
 
 	
 	// --------------------------------- END TXT Reader --------------------------------------
@@ -42,7 +42,6 @@ int main(int argc, char *argv[])
 	
 	/* if(argc > 1);
 	{
-		
 		printf("Help");
 	}
 	
@@ -81,9 +80,9 @@ int main(int argc, char *argv[])
 	
     fread(inputPixels, sizeof(unsigned char), imageSize, inputFilePointer); // Lees alle pixels (de rest van de file
     fclose(inputFilePointer);
-	for(int i =0; i < imageSize-2; i+=3)
+ 	for(int i =0; i < imageSize-2; i+=3)
 	{
-		printf("pixel %d: B= %d, G=%d, R=%d\n", i, inputPixels[i], inputPixels[i+1], inputPixels[i+2]);
+		printf("pixel %d: B= %d, G=%d, R=%d\n", i/3+1, inputPixels[i], inputPixels[i+1], inputPixels[i+2]);
 	}
    
     fclose(inputFilePointer);
