@@ -3,7 +3,7 @@
 
 #define __DEBUG
 
-#define BMPINPUTFILE "CP2_Encoded.bmp"
+#define BMPINPUTFILE "test.bmp"
 #define MAXCHAR 1000
 
 int main(int argc, char *argv[])
@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
 	printf("\n");
 	
 	//while (str[i] != NULL){
-	printf("%s \n", str);
+	printf("%c \n", str[0]);
 	//}
 
 	
@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
 	
 	// --------------------------------- START CODE ------------------------------------------
 	
-	/* if(argc > 1);
+	if(argc > 1);
 	{
 		printf("Help");
 	}
@@ -72,21 +72,23 @@ int main(int argc, char *argv[])
         printf("DEBUG info: breedte = %d\n", breedte);
         printf("DEBUG info: hoogte = %d\n", hoogte);
     #endif
-
+	
     int imageSize = 3 * breedte * hoogte; //ieder pixel heeft 3 byte data: rood, groen en blauw (RGB)
     unsigned char* inputPixels = (unsigned char *) calloc(imageSize, sizeof(unsigned char)); // allocate een array voor alle pixels
 	
-
+	
 	
     fread(inputPixels, sizeof(unsigned char), imageSize, inputFilePointer); // Lees alle pixels (de rest van de file
     fclose(inputFilePointer);
- 	for(int i =0; i < imageSize-2; i+=3)
+  	for(int i =0; i < imageSize-2; i+=3)
 	{
 		printf("pixel %d: B= %d, G=%d, R=%d\n", i/3+1, inputPixels[i], inputPixels[i+1], inputPixels[i+2]);
 	}
-   
+	
+	//printf("pixel B: %d  G: %d  R: %d ", inputPixels[0], inputPixels[1], inputPixels[2]);
+	
     fclose(inputFilePointer);
-    free(inputPixels); */
+    free(inputPixels);
     
 	// --------------------------------- END START CODE ------------------------------------------
 	
