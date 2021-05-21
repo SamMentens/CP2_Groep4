@@ -80,12 +80,24 @@ int main(int argc, char *argv[])
 	
     fread(inputPixels, sizeof(unsigned char), imageSize, inputFilePointer); // Lees alle pixels (de rest van de file
     fclose(inputFilePointer);
-  	for(int i =0; i < imageSize-2; i+=3)
+  	for(int i =0; i <= 3*8 -1; i+=3)
 	{
 		printf("pixel %d: B= %d, G=%d, R=%d\n", i/3+1, inputPixels[i], inputPixels[i+1], inputPixels[i+2]);
 	}
 	
-	//printf("pixel B: %d  G: %d  R: %d ", inputPixels[0], inputPixels[1], inputPixels[2]);
+	char output[7];				
+    itoa(str[0], output, 2);	// Omzetting naar binary
+	
+	printf("%d\n", str[0]);
+	
+    printf("%d\n", output[1]); 
+	
+	//output[7] = ;
+	
+    printf("%d\n", output[6]); 
+	
+	//int size = sizeof(output);
+
 	
     fclose(inputFilePointer);
     free(inputPixels);
