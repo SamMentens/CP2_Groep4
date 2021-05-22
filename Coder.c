@@ -8,35 +8,6 @@
 
 int main(int argc, char *argv[])
 {
-	// --------------------------------- TXT Reader ------------------------------------------
-	
-	FILE *fp;
-    char str[MAXCHAR];
-    char* SecretMessage = "SecretMessage.txt";
-	
-	int i = 0;
-	char SM[MAXCHAR];
- 
-    fp = fopen(SecretMessage, "r");
-    if (fp == NULL){
-        printf("Could not open file %s",SecretMessage);
-        return 1;
-    }
-	
-    while (fgets(str, MAXCHAR, fp) != NULL){
-        printf("%s", str);
-		//SM[i] = str;
-	    //i++;
-	}   fclose(fp);
-	
-	printf("\n");
-	
-	//while (str[i] != NULL){
-	printf("%c \n", str[0]);
-	//}
-
-	
-	// --------------------------------- END TXT Reader --------------------------------------
 	
 	// --------------------------------- START CODE ------------------------------------------
 	
@@ -76,33 +47,73 @@ int main(int argc, char *argv[])
     int imageSize = 3 * breedte * hoogte; //ieder pixel heeft 3 byte data: rood, groen en blauw (RGB)
     unsigned char* inputPixels = (unsigned char *) calloc(imageSize, sizeof(unsigned char)); // allocate een array voor alle pixels
 	
-	
-	
     fread(inputPixels, sizeof(unsigned char), imageSize, inputFilePointer); // Lees alle pixels (de rest van de file
-    fclose(inputFilePointer);
+
   	for(int i =0; i <= 3*8 -1; i+=3)
 	{
 		printf("pixel %d: B= %d, G=%d, R=%d\n", i/3+1, inputPixels[i], inputPixels[i+1], inputPixels[i+2]);
 	}
 	
-	char output[7];				
-    itoa(str[0], output, 2);	// Omzetting naar binary
+	// --------------------------------- END START CODE --------------------------------------
 	
-	printf("%d\n", str[0]);
+	// --------------------------------- TXT Reader ------------------------------------------
 	
-    printf("%d\n", output[1]); 
+	FILE *fp;
+    char str[MAXCHAR];
+    char* SecretMessage = "SecretMessage.txt";
 	
-	//output[7] = ;
+	int i = 0;
+	char SM[MAXCHAR];
+ 
+    fp = fopen(SecretMessage, "r");
+    if (fp == NULL){
+        printf("Could not open file %s",SecretMessage);
+        return 1;
+    }
 	
-    printf("%d\n", output[6]); 
+    while (fgets(str, MAXCHAR, fp) != NULL){
+        printf("%s", str);
+	}   fclose(fp);
 	
-	//int size = sizeof(output);
+	printf("\n");
 
+	// --------------------------------- END TXT Reader --------------------------------------
 	
-    fclose(inputFilePointer);
+	// --------------------------------- ENCODER ---------------------------------------------
+	
+	int inputBMP=5;
+	char inputTXT[7];
+	char output[7];
+    itoa(str[0], inputTXT, 2);	// Conversion to binary
+	
+	//printf("pixel: %d\n", inputPixels[1]);
+	//inputBMP = (inputPixels[1]%2);// if the number is odd, then lsb 1 is 0 otherwise.
+	
+	i=0;
+	int k=0;
+	while(str[i]!=NULL){ 
+	
+		itoa(str[i], inputTXT, 2);	// Conversion to binary
+		
+		printf("letter: %c\n", str[i]);
+		printf("%s\n", inputTXT);
+		int t=0;
+		while(t<=7){
+			inputBMP = (inputPixels[k]%2);  // if the number is odd, then lsb 1 is 0 otherwise.
+			printf("pixel: %d\n", inputPixels[k]);
+			printf("%d\n", inputBMP);
+
+			printf("%d",k);
+			k++;
+			t++;
+		}
+
+		i=i+1;
+	}
+	
+	// --------------------------------- END ENCODER -----------------------------------------
+	
+	fclose(inputFilePointer);
     free(inputPixels);
-    
-	// --------------------------------- END START CODE ------------------------------------------
-	
     return 0;
 }
