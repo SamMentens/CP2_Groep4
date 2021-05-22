@@ -3,7 +3,7 @@
 
 #define __DEBUG
 
-#define BMPINPUTFILE "test.bmp"
+#define BMPINPUTFILE "CP2_Encoded.bmp"
 #define MAXCHAR 1000
 
 int main(int argc, char *argv[])
@@ -100,26 +100,27 @@ int main(int argc, char *argv[])
 		int t=0;
 		while(t<=7){
 			inputBMP = (inputPixels[k]%2);  // if the number is odd, then lsb 1 is 0 otherwise.
-			
-			if(str[i]!=NULL)
-			{
-				if(inputBMP==1)
-				{
-					if(inputTXT[i]==0);
-					{
-						inputPixels[k]--;
-					}
-				}			
+				printf("\ninputBMP: %d", inputBMP);
 				
-				else if(inputBMP==0)
+				printf("\n before: %d",inputPixels[k]);
+				
+				if(inputBMP==0)
 				{
 					if(inputTXT[i]==1);
 					{
 						inputPixels[k]++;
 					}
+				}			
+				
+				else if(inputBMP==1)
+				{
+					if(inputTXT[i]==0);
+					{
+						inputPixels[k]--;
+					}
 				}
-			}
-			printf("\n RGB: %d",inputPixels[k]);
+			
+			printf("\n After: %d\n",inputPixels[k]);
 			
 			k++;
 			t++;
@@ -128,6 +129,45 @@ int main(int argc, char *argv[])
 		i=i+1;
 	}
 	
+ 	if(str[i+1]==NULL)
+	{
+		int ENDCODE[7] = {0,0,1,0,1,0,1,0};
+		int t=0;
+		
+		printf("\n*");
+		
+		while(t<=7){  // END the encoder with * 00101010
+			
+				inputBMP = (inputPixels[k]%2);  // if the number is odd, then lsb 1 is 0 otherwise.
+				
+				printf("\ninputTXT: %d", inputTXT[t]);
+				
+				printf("\ninputBMP: %d", inputBMP);
+				
+				printf("\n before: %d",inputPixels[k]);
+				
+				if(inputBMP==0)
+				{
+					if(inputTXT[i]==1);
+					{
+						inputPixels[k]++;
+					}
+				}			
+				
+				else if(inputBMP==1)
+				{
+					if(inputTXT[i]==0);
+					{
+						inputPixels[k]--;
+					}
+				}			
+			
+			printf("\n After: %d\n",inputPixels[k]);
+			
+			k++;
+			t++; 
+		}
+	} 
 	// --------------------------------- END ENCODER -----------------------------------------
 	
 	fclose(inputFilePointer);
