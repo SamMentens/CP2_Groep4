@@ -91,19 +91,36 @@ int main(int argc, char *argv[])
 	
 	i=0;
 	int k=0;
-	while(str[i]!=NULL){ 
+	while(str[i+1]!=NULL){ 
 	
 		itoa(str[i], inputTXT, 2);	// Conversion to binary
 		
-		printf("letter: %c\n", str[i]);
+		printf("\nletter: %c\n", str[i]);
 		printf("%s\n", inputTXT);
 		int t=0;
 		while(t<=7){
 			inputBMP = (inputPixels[k]%2);  // if the number is odd, then lsb 1 is 0 otherwise.
-			printf("pixel: %d\n", inputPixels[k]);
-			printf("%d\n", inputBMP);
-
-			printf("%d",k);
+			
+			if(str[i]!=NULL)
+			{
+				if(inputBMP==1)
+				{
+					if(inputTXT[i]==0);
+					{
+						inputPixels[k]--;
+					}
+				}			
+				
+				else if(inputBMP==0)
+				{
+					if(inputTXT[i]==1);
+					{
+						inputPixels[k]++;
+					}
+				}
+			}
+			printf("\n RGB: %d",inputPixels[k]);
+			
 			k++;
 			t++;
 		}
