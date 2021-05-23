@@ -1,4 +1,0 @@
-
-void Encode();
-
-void Decode();
